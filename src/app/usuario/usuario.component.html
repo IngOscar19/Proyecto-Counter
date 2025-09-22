@@ -1,0 +1,85 @@
+<div class="container mt-4">
+  <div class="row text-center">
+    
+    <div class="col">
+      <h2>Nombre</h2>
+      <p>{{ nombre }}</p>
+    </div>
+
+    
+    <div class="col">
+      <h2>Edad</h2>
+      <p>{{ edad }}</p>
+    </div>
+
+   
+    <div class="col text-end">
+      <h2>Nombre capitalizado</h2>
+      <p>{{ nombre | uppercase }}</p>
+    </div>
+  </div>
+
+  <div class="mt-4 d-flex justify-content-center gap-3">
+    <button class="btn btn-primary" (click)="abrirCambiarNombre()">Cambiar nombre</button>
+    <button class="btn btn-success" (click)="abrirCambiarEdad()">Cambiar edad</button>
+    <button class="btn btn-danger" (click)="abrirReset()">Reset</button>
+  </div>
+</div>
+
+<!-- Modal Cambiar Nombre -->
+<div #modalNombre class="modal fade" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cambiar nombre</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <input type="text" class="form-control" [(ngModel)]="nuevoNombre">
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button class="btn btn-primary" data-bs-dismiss="modal" (click)="guardarNombre()">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Cambiar Edad -->
+<div #modalEdad class="modal fade" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cambiar edad</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <input type="number" class="form-control" [(ngModel)]="nuevaEdad">
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button class="btn btn-success" data-bs-dismiss="modal" (click)="guardarEdad()">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Reset -->
+<div #modalReset class="modal fade" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Reset nombre capitalizado</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <input type="text" class="form-control" [(ngModel)]="nombreReset">
+        <small class="text-muted">Se guardará en mayúsculas</small>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button class="btn btn-danger" data-bs-dismiss="modal" (click)="guardarReset()">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
