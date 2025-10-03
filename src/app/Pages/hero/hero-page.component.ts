@@ -16,9 +16,10 @@ export class HeroPageComponent {
 
     nameCapitalized = computed(() => this.name().toUpperCase());
 
-    getHeroDescription() {
-        return `${this.name()} tiene ${this.age()} `;
-    }
+    HeroDescription= computed ( () => {
+        const description = `${this.name()} - ${this.age()}`;
+        return description;
+    })
 
     changeHero() {
         this.name.set('Spiderman');
