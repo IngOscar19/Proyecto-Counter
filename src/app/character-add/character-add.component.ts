@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output, signal } from '@angular/core';
+import { Component, EventEmitter, Output, linkedSignal, effect } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -11,10 +11,17 @@ import { FormsModule } from '@angular/forms';
 })
 export class CharacterAddComponent {
 
-  name = signal('');
-  power = signal(0);
+  // 👇 Indicamos el tipo genérico y usamos función como argumento
+  name = linkedSignal<string>(() => localStorage.getItem('name') ?? '');
+  power = linkedSignal<number>(() => Number(localStorage.getItem('power')) || 0);
 
   @Output() characterAdded = new EventEmitter<{ name: string; power: number }>();
+
+  constructor() {
+    // Persistencia automática
+    effect(() => localStorage.setItem('name', this.name()));
+    effect(() => localStorage.setItem('power', this.power().toString()));
+  }
 
   addCharacter() {
     if (this.name().trim() === '' || this.power() <= 0) return;

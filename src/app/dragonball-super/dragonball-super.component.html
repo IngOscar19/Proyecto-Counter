@@ -1,9 +1,28 @@
-<section class="row mt-4">
-  <div class="col-12 col-sm-6">
-    <app-character-add (characterAdded)="addCharacter($event)"></app-character-add>
-  </div>
+<section class="container mt-5 p-4 bg-white border border-secondary-subtle rounded-4 shadow">
+  <h2 class="text-center mb-5 text-secondary">Dragon Ball Super</h2>
+  
+  <div class="row g-4 justify-content-center">
+    
+    <div class="col-12 col-lg-5">
+      <div class="card border-primary h-100 shadow-sm">
+        <div class="card-header bg-primary text-white">
+          <h4 class="h5 mb-0">Añadir Nuevo Personaje</h4>
+        </div>
+        <div class="card-body">
+          <app-character-add (characterAdded)="addCharacter($event)"></app-character-add>
+        </div>
+      </div>
+    </div>
 
-  <div class="col-12 col-sm-6">
-    <app-character-list [characters]="characters()"></app-character-list>
+    <div class="col-12 col-lg-7">
+      <div class="card border-secondary h-100 shadow-sm">
+        <div class="card-header bg-secondary text-white">
+          <h4 class="h5 mb-0">Personajes</h4>
+        </div>
+        <div class="card-body">
+          <app-character-list [characters]="characters()"></app-character-list>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
